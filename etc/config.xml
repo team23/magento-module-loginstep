@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <loginstep_general>
+            <loginstep_settings>
+                <module_state>1</module_state>
+                <login_step_order>1</login_step_order>
+                <enable_custom_register_message>0</enable_custom_register_message>
+                <enable_custom_login_message>0</enable_custom_login_message>
+            </loginstep_settings>
+        </loginstep_general>
+    </default>
+</config>

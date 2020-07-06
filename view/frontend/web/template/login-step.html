@@ -1,0 +1,39 @@
+<!--The 'login-step' value from the .js file-->
+<li id="login-step" class="login-step" data-bind="fadeVisible: isVisible">
+    <div class="step-title" data-bind="i18n: 'Login or Register'" data-role="title"></div>
+    <div id="checkout-step-title"
+         class="step-content"
+         data-role="content">
+
+        <!-- Dont show login if already logged in -->
+        <!-- ko if: isLoggedIn() -->
+        <div class="logged-in-message">
+            <span><!-- ko i18n: 'You are already logged in.'--><!-- /ko --></span>
+        </div>
+        <!-- /ko -->
+
+        <!-- Show login if not already logged in -->
+        <!-- ko if: !isLoggedIn() -->
+        <div class="actions-toolbar">
+            <div class="logged-in-content">
+                <!-- ko foreach: getRegion('loginTemplate') -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                <!-- /ko -->
+            </div>
+        </div>
+        <!-- /ko -->
+
+        <!-- Show button to next step if already logged in -->
+        <!-- ko if: isLoggedIn() || isGuestShippingAllowed()-->
+        <form data-bind="submit: navigateToNextStep" novalidate="novalidate">
+            <div class="actions-toolbar" id="login-step-method-buttons-container">
+                <div class="primary">
+                    <button data-role="login-step-continue" type="submit" class="button action continue primary">
+                        <span data-bind="i18n: 'Next'"><!-- ko i18n: 'Next'--><!-- /ko --></span>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <!-- /ko -->
+    </div>
+</li>

@@ -1,0 +1,48 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Add custom step -->
+        <referenceBlock name="checkout.root">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="checkout" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="steps" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <!-- Add login-step -->
+                                        <item name="login-step" xsi:type="array">
+                                            <item name="component" xsi:type="string">Team23_LoginStep/js/view/login-step</item>
+                                            <item name="displayArea" xsi:type="string">summary</item>
+                                            <item name="config" xsi:type="array">
+                                                <!-- Dynamically hide the step if the customer is logged in -->
+                                                <item name="componentDisabled" xsi:type="helper" helper="Team23\LoginStep\Helper\Data::isLoggedIn" />
+                                            </item>
+                                            <item name="children" xsi:type="array">
+                                                <item name="loginTemplate" xsi:type="array">
+                                                    <item name="component" xsi:type="string">uiComponent</item>
+                                                    <item name="displayArea" xsi:type="string">loginTemplate</item>
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="ajaxLogin" xsi:type="array">
+                                                            <item name="component" xsi:type="string">Team23_LoginStep/js/view/type/login</item>
+                                                            <item name="children" xsi:type="array">
+                                                                <item name="messages" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Magento_Ui/js/view/messages</item>
+                                                                    <item name="displayArea" xsi:type="string">messages</item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                            <item name="sortOrder" xsi:type="string">1</item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

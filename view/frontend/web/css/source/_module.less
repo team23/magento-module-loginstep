@@ -1,0 +1,28 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .login-step {
+        .action {
+            &.primary {
+                &:extend(.abs-button-l all);
+                margin: @indent__base 0 0;
+            }
+        }
+    }
+
+    .logged-in-message {
+        margin-bottom: 20px;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .login-step {
+        .opc-wrapper .form-login {
+            border-bottom: 1px solid transparent;
+            padding-bottom: 20px;
+
+        }
+    }
+}

@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="team23" translate="label" sortOrder="23000">
+            <label>TEAM23</label>
+        </tab>
+        <section id="loginstep_general" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>TEAM23 LoginStep</label>
+            <tab>team23</tab>
+            <!-- Access to LoginStep Settings only allowed if set in User Roles -->
+            <resource>Team23_LoginStep::configuration</resource>
+            <group id="loginstep_settings" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+                <label>General Settings</label>
+                <field id="module_state" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="login_step_order" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Login Step Order</label>
+                    <source_model>Team23\LoginStep\Model\System\Config\Source\LoginStepOrder</source_model>
+                    <comment>Order of Login and Register within the checkout step</comment>
+                </field>
+                <field id="enable_custom_register_message" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable custom register message</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <validate>validate-digits</validate>
+                </field>
+                <field id="register_message" translate="label" type="textarea" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Register message</label>
+                    <comment>Message to show as register information</comment>
+                    <depends>
+                        <field id="enable_custom_register_message">1</field>
+                    </depends>
+                </field>
+                <field id="enable_custom_login_message" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable custom login message</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <validate>validate-digits</validate>
+                </field>
+                <field id="login_message" translate="label" type="textarea" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Login message</label>
+                    <comment>Message to show before the login form</comment>
+                    <depends>
+                        <field id="enable_custom_login_message">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

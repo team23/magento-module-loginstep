@@ -1,0 +1,29 @@
+{
+    "name": "team23/module-loginstep",
+    "description": "TEAM23 LoginStep Extension",
+    "homepage": "https://www.team23.de/",
+    "version": "1.0.0",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Emanuel Jacob",
+            "email": "info@slashplus.de",
+            "homepage": "https://www.slashplus.de"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "~7.2"
+    },
+    "keywords": [
+        "Magento 2"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Team23\\LoginStep\\": ""
+        }
+    }
+}
