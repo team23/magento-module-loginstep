@@ -19,10 +19,6 @@ class Config
      * @var string
      */
     protected $storeScope;
-    /**
-     * @var \Magento\Framework\Escaper
-     */
-    private $escaper;
 
     /**
      * Config constructor.
@@ -31,13 +27,11 @@ class Config
      * @param \Magento\Framework\Escaper $escaper
      */
     public function __construct(
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\Framework\Escaper $escaper
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
     )
     {
         $this->scopeConfig = $scopeConfig;
         $this->storeScope = \Magento\Store\Model\ScopeInterface::SCOPE_STORE;
-        $this->escaper = $escaper;
     }
 
     /**
@@ -85,7 +79,6 @@ class Config
     public function getRegisterMessage()
     {
         return $this->getSetting('loginstep_settings/register_message');
-//        return $this->escaper->escapeHtml($this->getSetting('loginstep_settings/register_message'));
     }
 
     /**
@@ -104,6 +97,5 @@ class Config
     public function getLoginMessage()
     {
         return $this->getSetting('loginstep_settings/login_message');
-//        return $this->escaper->escapeHtml($this->getSetting('loginstep_settings/login_message'));
     }
 }
