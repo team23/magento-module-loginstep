@@ -1,4 +1,4 @@
-"You will be redirected to the cart.","Sie werden zum Warenkorb umgeleitet."
+"You will be redirected to the cart.","Sie werden zum Warenkorb weitergeleitet."
 "Login or Register", "Anmelden oder Registrieren"
 "You are already logged in.", "Sie sind bereits angemeldet."
 "Login before register","Anmeldung vor Registrierung"
@@ -11,3 +11,5 @@
 "Enable custom login message","Aktiviere benutzerdefinierte Nachricht zur Anmeldung"
 "Login message","Nachricht zur Anmeldung"
 "Message to show before the login form", "Die Nachricht die vor der Anmeldemaske angezeigt wird"
+"Continue", "Fortfahren"
+"Continue as guest", "Als Gast fortfahren"
