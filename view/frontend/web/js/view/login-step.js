@@ -37,7 +37,6 @@ define(
             isLoggedIn: ko.observable(false),
             isSendButtonVisible: ko.observable(false),
             sortOrder: 1,
-            isAgeVerified: ko.observable(false),
 
             /**
              *
@@ -45,7 +44,6 @@ define(
              */
             initialize: function () {
                 this._super();
-                console.log(customerData.get('customer'));
 
                 // register the login-step
                 stepNavigator.registerStep(
