@@ -15,7 +15,7 @@
                                             <item name="displayArea" xsi:type="string">summary</item>
                                             <item name="config" xsi:type="array">
                                                 <!-- Dynamically hide the step if the customer is logged in -->
-                                                <item name="componentDisabled" xsi:type="helper" helper="Team23\LoginStep\Helper\Data::isLoggedIn" />
+                                                <!-- <item name="componentDisabled" xsi:type="helper" helper="Team23\LoginStep\Helper\Data::isLoggedIn" /> -->
                                             </item>
                                             <item name="children" xsi:type="array">
                                                 <item name="loginTemplate" xsi:type="array">
