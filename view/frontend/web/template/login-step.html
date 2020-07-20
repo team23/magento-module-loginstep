@@ -26,7 +26,7 @@
         <!-- Show button to next step if already logged in -->
         <!-- ko if: isLoggedIn()-->
         <form data-bind="submit: navigateToNextStep" novalidate="novalidate">
-            <div class="actions-toolbar" id="login-step-continue-buttons-container">
+            <div class="actions-toolbar login-step-continue" id="login-step-continue-buttons-container">
                 <div class="primary">
                     <button data-role="login-step-continue" type="submit" class="button action continue primary">
                         <span data-bind="i18n: 'Continue'"><!-- ko i18n: 'Continue'--><!-- /ko --></span>
@@ -37,7 +37,7 @@
         <!-- /ko -->
         <!-- ko if: !isLoggedIn() && isGuestShippingAllowed()-->
         <form data-bind="submit: navigateToNextStep" novalidate="novalidate">
-            <div class="actions-toolbar" id="login-step-guest-buttons-container">
+            <div class="actions-toolbar login-step-continue" id="login-step-guest-buttons-container">
                 <div class="primary">
                     <button data-role="login-step-continue" type="submit"
                             class="button action continue continue-guest primary">
