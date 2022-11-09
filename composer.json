@@ -2,7 +2,7 @@
     "name": "team23/module-loginstep",
     "description": "TEAM23 LoginStep Extension",
     "homepage": "https://www.team23.de/",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "license": "proprietary",
     "authors": [
         {
@@ -13,7 +13,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": "~7.2"
+        "php": "~7.4|~8.1"
     },
     "keywords": [
         "Magento 2"
