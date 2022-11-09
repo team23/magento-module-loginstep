@@ -2,32 +2,38 @@
 
 namespace Team23\LoginStep\Helper;
 
+use Magento\Customer\Model\Session;
+use Magento\Framework\App\Helper\AbstractHelper;
+use Magento\Framework\App\Helper\Context;
+use Team23\LoginStep\Model\Config;
+
 /**
  * Class Data
  *
  * @package Team23\LoginStep\Helper
  */
-class Data extends \Magento\Framework\App\Helper\AbstractHelper
+class Data extends AbstractHelper
 {
     /**
-     * @var \Team23\LoginStep\Model\Config
+     * @var Config
      */
-    protected $config;
+    protected Config $config;
     /**
-     * @var \Magento\Customer\Model\Session
+     * @var Session
      */
-    private $customerSession;
+    private Session $customerSession;
 
     /**
      * Data constructor.
      *
-     * @param \Magento\Framework\App\Helper\Context $context
-     * @param \Team23\LoginStep\Model\Config $config
+     * @param Context $context
+     * @param Config $config
+     * @param Session $customerSession
      */
     public function __construct(
-        \Magento\Framework\App\Helper\Context $context,
-        \Team23\LoginStep\Model\Config $config,
-        \Magento\Customer\Model\Session $customerSession
+        Context $context,
+        Config  $config,
+        Session $customerSession
     ) {
         $this->config = $config;
         $this->customerSession = $customerSession;
@@ -38,7 +44,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      *
      * @return bool
      */
-    public function isLoggedIn()
+    public function isLoggedIn(): bool
     {
         return $this->customerSession->isLoggedIn();
     }
