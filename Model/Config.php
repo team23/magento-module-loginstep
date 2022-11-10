@@ -2,6 +2,9 @@
 
 namespace Team23\LoginStep\Model;
 
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\ScopeInterface;
+
 /**
  * Class Config
  *
@@ -9,29 +12,28 @@ namespace Team23\LoginStep\Model;
  */
 class Config
 {
-    const loginstep_settings = 'loginstep_general/';
+    const LOGINSTEP_SETTINGS = 'loginstep_general/';
 
     /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     * @var ScopeConfigInterface
      */
-    protected $scopeConfig;
+    protected ScopeConfigInterface $scopeConfig;
+
     /**
      * @var string
      */
-    protected $storeScope;
+    protected string $storeScope;
 
     /**
      * Config constructor.
      *
-     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
-     * @param \Magento\Framework\Escaper $escaper
+     * @param ScopeConfigInterface $scopeConfig
      */
     public function __construct(
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
-    )
-    {
+        ScopeConfigInterface $scopeConfig
+    ) {
         $this->scopeConfig = $scopeConfig;
-        $this->storeScope = \Magento\Store\Model\ScopeInterface::SCOPE_STORE;
+        $this->storeScope = ScopeInterface::SCOPE_STORE;
     }
 
     /**
@@ -40,9 +42,9 @@ class Config
      * @param string $setting
      * @return mixed|string
      */
-    public function getSetting($setting = '')
+    public function getSetting(string $setting = ''): mixed
     {
-        return $this->scopeConfig->getValue(self::loginstep_settings . $setting, $this->storeScope) ?? '';
+        return $this->scopeConfig->getValue(self::LOGINSTEP_SETTINGS . $setting, $this->storeScope) ?? '';
     }
 
     /**
@@ -50,7 +52,7 @@ class Config
      *
      * @return bool
      */
-    public function isModuleEnabled()
+    public function isModuleEnabled(): bool
     {
         return boolval($this->getSetting('loginstep_settings/module_state'));
     }
@@ -58,7 +60,7 @@ class Config
     /**
      * @return int
      */
-    public function getLoginStepOrder()
+    public function getLoginStepOrder(): int
     {
         return (int)$this->getSetting('loginstep_settings/login_step_order');
     }
@@ -66,7 +68,7 @@ class Config
     /**
      * @return bool
      */
-    public function isCustomRegisterMessageEnabled()
+    public function isCustomRegisterMessageEnabled(): bool
     {
         return boolval($this->getSetting('loginstep_settings/enable_custom_register_message'));
     }
@@ -76,7 +78,7 @@ class Config
      *
      * @return array|string
      */
-    public function getRegisterMessage()
+    public function getRegisterMessage(): array|string
     {
         return $this->getSetting('loginstep_settings/register_message');
     }
@@ -84,7 +86,7 @@ class Config
     /**
      * @return bool
      */
-    public function isCustomLoginMessageEnabled()
+    public function isCustomLoginMessageEnabled(): bool
     {
         return boolval($this->getSetting('loginstep_settings/enable_custom_login_message'));
     }
@@ -94,7 +96,7 @@ class Config
      *
      * @return array|string
      */
-    public function getLoginMessage()
+    public function getLoginMessage(): array|string
     {
         return $this->getSetting('loginstep_settings/login_message');
     }

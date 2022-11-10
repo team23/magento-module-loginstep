@@ -19,7 +19,7 @@ class DataProvider extends \Magento\Framework\View\Element\UiComponent\DataProvi
     /**
      * @var AttributeRepository
      */
-    private $attributeRepository;
+    private AttributeRepository $attributeRepository;
 
     /**
      * Constructor
@@ -65,7 +65,7 @@ class DataProvider extends \Magento\Framework\View\Element\UiComponent\DataProvi
     /**
      * @inheritdoc
      */
-    public function getData()
+    public function getData(): array
     {
         $data = parent::getData();
         foreach ($this->attributeRepository->getList() as $attributeCode => $attributeData) {

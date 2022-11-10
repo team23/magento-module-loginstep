@@ -4,7 +4,9 @@ namespace Team23\LoginStep\Ui\Component\DataProvider;
 
 use Magento\Customer\Api\CustomerMetadataInterface;
 use Magento\Customer\Api\GroupRepositoryInterface;
+use Magento\Framework\Api\AttributeInterface;
 use Magento\Framework\Api\AttributeValueFactory;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Store\Model\StoreManagerInterface;
 
@@ -18,32 +20,32 @@ class Document extends \Magento\Framework\View\Element\UiComponent\DataProvider\
     /**
      * @var string
      */
-    private static $genderAttributeCode = 'gender';
+    private static string $genderAttributeCode = 'gender';
 
     /**
      * @var string
      */
-    private static $groupAttributeCode = 'group_id';
+    private static string $groupAttributeCode = 'group_id';
 
     /**
      * @var string
      */
-    private static $websiteAttributeCode = 'website_id';
+    private static string $websiteAttributeCode = 'website_id';
 
     /**
      * @var CustomerMetadataInterface
      */
-    private $customerMetadata;
+    private CustomerMetadataInterface $customerMetadata;
 
     /**
      * @var GroupRepositoryInterface
      */
-    private $groupRepository;
+    private GroupRepositoryInterface $groupRepository;
 
     /**
      * @var StoreManagerInterface
      */
-    private $storeManager;
+    private StoreManagerInterface $storeManager;
 
     /**
      * Document constructor.
@@ -68,7 +70,7 @@ class Document extends \Magento\Framework\View\Element\UiComponent\DataProvider\
     /**
      * @inheritdoc
      */
-    public function getCustomAttribute($attributeCode)
+    public function getCustomAttribute($attributeCode): ?AttributeInterface
     {
         switch ($attributeCode) {
             case self::$genderAttributeCode:
@@ -90,9 +92,10 @@ class Document extends \Magento\Framework\View\Element\UiComponent\DataProvider\
      *
      * Method set gender label instead of id value
      *
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @return void
+     * @throws LocalizedException
      */
-    private function setGenderValue()
+    private function setGenderValue(): void
     {
         $value = $this->getData(self::$genderAttributeCode);
 
@@ -116,9 +119,9 @@ class Document extends \Magento\Framework\View\Element\UiComponent\DataProvider\
      * Method set group code instead id value
      *
      * @return void
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
-    private function setCustomerGroupValue()
+    private function setCustomerGroupValue(): void
     {
         $value = $this->getData(self::$groupAttributeCode);
         try {
@@ -136,7 +139,7 @@ class Document extends \Magento\Framework\View\Element\UiComponent\DataProvider\
      *
      * @return void
      */
-    private function setWebsiteValue()
+    private function setWebsiteValue(): void
     {
         $value = $this->getData(self::$websiteAttributeCode);
         $list = $this->storeManager->getWebsites();

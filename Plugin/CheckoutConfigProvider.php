@@ -2,6 +2,10 @@
 
 namespace Team23\LoginStep\Plugin;
 
+use Magento\Checkout\Model\DefaultConfigProvider;
+use Magento\Customer\Block\Account\AuthenticationPopup;
+use Team23\LoginStep\Model\Config;
+
 /**
  * Class CheckoutConfigProvider
  *
@@ -10,31 +14,34 @@ namespace Team23\LoginStep\Plugin;
 class CheckoutConfigProvider
 {
     /**
-     * @var \Team23\LoginStep\Model\Config
+     * @var Config
      */
-    protected $config;
+    protected Config $config;
     /**
-     * @var \Magento\Customer\Block\Account\AuthenticationPopup
+     * @var AuthenticationPopup
      */
-    private $authenticationPopup;
+    private AuthenticationPopup $authenticationPopup;
 
     /**
      * CheckoutConfigProvider constructor.
      *
-     * @param \Team23\LoginStep\Model\Config $config
+     * @param Config $config
+     * @param AuthenticationPopup $authenticationPopup
      */
     public function __construct(
-        \Team23\LoginStep\Model\Config $config,
-        \Magento\Customer\Block\Account\AuthenticationPopup $authenticationPopup
+        Config $config,
+        AuthenticationPopup $authenticationPopup
     ) {
         $this->config = $config;
         $this->authenticationPopup = $authenticationPopup;
     }
 
     /**
-     * @inheritdoc
+     * @param DefaultConfigProvider $subject
+     * @param array $result
+     * @return array
      */
-    public function afterGetConfig(\Magento\Checkout\Model\DefaultConfigProvider $subject, array $result)
+    public function afterGetConfig(DefaultConfigProvider $subject, array $result): array
     {
         $result['login_step']['settings'] = $this->authenticationPopup->getConfig();
 
