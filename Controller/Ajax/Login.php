@@ -12,6 +12,7 @@ use Magento\Framework\Exception\EmailNotConfirmedException;
 use Magento\Framework\Exception\InvalidEmailOrPasswordException;
 use Magento\Customer\Model\Account\Redirect as AccountRedirect;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\Response\Http;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Json\Helper\Data;
 use Magento\Framework\Serialize\Serializer\JSON;
@@ -100,10 +101,10 @@ class Login extends Action
      *
      * Expects a POST. ex for JSON {"username":"user@magento.com", "password":"userpassword"}
      *
-     * @return ResultInterface
+     * @return Http
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    public function execute(): ResultInterface
+    public function execute(): Http
     {
         $httpBadRequestCode = 400;
 
@@ -150,9 +151,9 @@ class Login extends Action
      * Create json response
      *
      * @param array|string $response
-     * @return ResultInterface
+     * @return Http
      */
-    public function jsonResponse(array|string $response = ''): ResultInterface
+    public function jsonResponse(array|string $response = ''): Http
     {
         return $this->getResponse()->representJson($this->jsonSerializer->serialize($response));
     }
